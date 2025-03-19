@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="public/styles/shared.css">
     <link rel="stylesheet" href="public/styles/shop.css">
-    <title>Welcome!</title>
+    <title>Product Title</title>
   </head>
   <body>
     <header id="barnav">
@@ -16,7 +16,7 @@
         <li><a href="http://">Login</a></li>
 
         <!-- Customers Side -->
-        <li><a href="http://">Shop</a></li>
+        <li><a href="./shop.html">Shop</a></li>
         <li><a href="http://">Shopping Cart</a></li>
         <li><a href="http://">Orders</a></li>
 
@@ -28,15 +28,18 @@
       </ul>
       <hr />
     </header>
-    <h1>All products</h1>
-    <!-- This article will be an include in the views folder -->
-    <article class="item-cart">
+    
+    <article id="item-showcase">
       <img src="" alt="">
       <h2>Test Product</h2>
       <form action="" method="get">
-        <button>View Details</button>
+        <button>Add to Cart</button>
       </form>
     </article>
-    <!-- End of the article -->
+
+    <article id="item-description">
+        <p>This is fake text as an example</p>
+    </article>
+
   </body>
 </html>
