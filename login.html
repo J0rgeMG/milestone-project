@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/styles/shared.css">
-    <link rel="stylesheet" href="public/styles/shop.css">
-    <title>Product Title</title>
+    <link rel="stylesheet" href="public/styles/shared.css" />
+    <link rel="stylesheet" href="public/styles/shop.css" />
+    <title>Welcome!</title>
   </head>
   <body>
     <header id="barnav">
@@ -28,18 +28,19 @@
       </ul>
       <hr />
     </header>
-    
-    <article id="item-showcase">
-      <img src="" alt="">
-      <h2>Test Product</h2>
+    <h1>Create a New Account</h1>
+    <section id="user-auth-section">
       <form action="" method="get">
-        <button>Add to Cart</button>
+        <!-- Log in info -->
+        <label for="user-email">E-Mail</label>
+        <input type="email" name="user-email" id="user-email" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+
+        <!-- Actions -->
+        <button type="button">Login</button>
+        <p><a href="./signup.html">Create a new user</a></p>
       </form>
-    </article>
-
-    <article id="item-description">
-        <p>This is fake text as an example</p>
-    </article>
-
+    </section>
   </body>
 </html>
