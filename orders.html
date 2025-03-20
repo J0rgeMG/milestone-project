@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/styles/shared.css">
-    <link rel="stylesheet" href="public/styles/shop.css">
-    <title>Welcome!</title>
+    <link rel="stylesheet" href="public/styles/shared.css" />
+    <link rel="stylesheet" href="public/styles/shop.css" />
+    <title>All Your Orders</title>
   </head>
   <body>
     <header id="barnav">
@@ -28,15 +28,16 @@
       </ul>
       <hr />
     </header>
-    <h1>All products</h1>
-    <!-- This article will be an include in the views folder -->
-    <article class="item-card">
-      <img src="" alt="">
-      <h2>Test Product</h2>
-      <form action="" method="get">
-        <button>View Details</button>
-      </form>
-    </article>
-    <!-- End of the article -->
+
+    <h1>All Your Orders</h1>
+
+    <section id="orders">
+      <!-- pending orders are going to be loaded here -->
+      <h2>$000.00 - Mon, August 18, 2021</h2>
+      <p>pending</p>
+      <ul id="pending list">
+        <li>Example product - $000.00 ($000.00 x 0)</li>
+      </ul>
+    </section>
   </body>
 </html>
