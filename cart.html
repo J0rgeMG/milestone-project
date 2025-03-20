@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/styles/shared.css">
+    <link rel="stylesheet" href="public/styles/shop.css">
+    <title>Your Cart</title>
+</head>
+<body>
+    <header id="barnav">
+        <h1><a href="./shop.html">WDE</a></h1>
+        <ul>
+          <!-- Both of this li can be seen by customers & admins -->
+          <li><a href="http://">Signup</a></li>
+          <li><a href="http://">Login</a></li>
+  
+          <!-- Customers Side -->
+          <li><a href="./shop.html">Shop</a></li>
+          <li><a href="./cart.html">Shopping Cart</a></li>
+          <li><a href="http://">Orders</a></li>
+  
+          <!-- Admin Side -->
+          <li><a href="http://">Dashboard</a></li>
+          <li><a href="http://">New Product</a></li>
+          <li><a href="http://">Update Product</a></li>
+          <li><a href="http://">All Orders</a></li>
+        </ul>
+        <hr />
+    </header>
+
+    <h1>Your Cart</h1>
+
+    <section id="cart">
+        <!-- the articles are going to be loaded here -->
+         <article class="cart-item">
+            <form action="" method="get">
+                <h3>Item name</h3>
+                <p>Item price</p>
+                <input type="text">
+                <button type="button">Update</button>
+            </form>
+         </article>
+    </section>
+    <section id="payment">
+        <p>Total: price number here</p>
+        <p>Log in to proceed and purchase the items.</p>
+    </section>
+</body>
+</html>
