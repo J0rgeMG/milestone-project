@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="public/styles/shared.css" />
+    <link rel="stylesheet" href="public/styles/shop.css" />
+    <title>Welcome!</title>
+  </head>
+  <body>
+    <header id="barnav">
+      <h1><a href="./shop.html">WDE</a></h1>
+      <ul>
+        <!-- Both of this li can be seen by customers & admins -->
+        <li><a href="./signup.html">Signup</a></li>
+        <li><a href="http://">Login</a></li>
+
+        <!-- Customers Side -->
+        <li><a href="./shop.html">Shop</a></li>
+        <li><a href="./cart.html">Shopping Cart</a></li>
+        <li><a href="http://">Orders</a></li>
+
+        <!-- Admin Side -->
+        <li><a href="http://">Dashboard</a></li>
+        <li><a href="http://">New Product</a></li>
+        <li><a href="http://">Update Product</a></li>
+        <li><a href="http://">All Orders</a></li>
+      </ul>
+      <hr />
+    </header>
+    <h1>Create a New Account</h1>
+    <section id="signup-section">
+      <form action="" method="get">
+        <!-- Log in info -->
+        <label for="user-email">E-Mail</label>
+        <input type="email" name="user-email" id="user-email" />
+        <label for="confirm-email">Confirm E-Mail</label>
+        <input type="email" name="confirm-email" id="confirm-email" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+        <hr />
+
+        <!-- Extra user info -->
+        <label for="user-full-name">Full Name</label>
+        <input type="text" name="user-full-name" id="user-full-name" />
+        <label for="user-street">Street</label>
+        <input type="text" name="user-street" id="user-street" />
+        <label for="user-postal-code">Postal Code</label>
+        <input type="text" name="user-postal-code" id="user-postal-code" />
+        <label for="user-city">City</label>
+        <input type="text" name="user-city" id="user-city" />
+
+        <!-- Actions -->
+        <button type="button">Create Account</button>
+        <p><a href="./login.html">Login instead</a></p>
+      </form>
+    </section>
+  </body>
+</html>
