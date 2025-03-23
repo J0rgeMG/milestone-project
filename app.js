@@ -1,3 +1,6 @@
+// Buit-in packages
+const path = require('path');
+
 // Third party packages
 const express = require('express');
 
@@ -6,6 +9,10 @@ const authRoutes = require('./routes/auth.routes');
 
 // Loading app
 const app = express();
+
+// App configuration
+app.set('view engine', 'ejs'); // We set EJS as our view engine
+app.set('views', path.join(__dirname, 'views')); // We tell app where our views are located
 
 // Loading the routers
 app.use(authRoutes);
