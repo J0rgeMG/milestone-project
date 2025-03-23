@@ -10,5 +10,7 @@ const router = express.Router();
 // Routes WIP
 router.get('/signup', authController.getSignup);
 
+router.get('/login', authController.getLogin);
+
 // Exports
 module.exports = router;
