@@ -1,6 +1,6 @@
 // Middleware functions
 function getSignup(req, res){
-    // To complete...
+    res.render('customer/auth/signup');
 }
 
 function getLogin(req, res){
