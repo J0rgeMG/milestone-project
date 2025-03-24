@@ -8,7 +8,7 @@ const MongoClient = mongodb.MongoClient;
 let database;
 
 async function connectToDatabase() {
-    const databaseUrl = 'localhost:27017';
+    const databaseUrl = 'mongodb://localhost:27017';
     const databaseName = 'online-shop';
 
     const client = await MongoClient.connect(databaseUrl);

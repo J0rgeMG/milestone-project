@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 
 // Our packages
+const db = require('./data/database');
 const authRoutes = require('./routes/auth.routes');
 
 // Loading app
@@ -20,5 +21,10 @@ app.use(express.static('public'));
 app.use(authRoutes);
 
 // Starting the app, 3000 as default port
-// <domain>:3000
-app.listen(3000);
+db.connectToDatabase().then(function() {
+    // <domain>:3000
+    app.listen(3000);
+}).catch(function(error) {
+    console.log('Failed to connect to the database!');
+    console.log(error);
+});
