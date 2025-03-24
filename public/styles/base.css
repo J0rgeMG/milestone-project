@@ -1,0 +1,13 @@
+/* 
+    box-sizing is set to border box 
+    so when configuring the width of
+    an element also counts the border
+    is a convenience feature
+*/
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Montserrat','sans-serif';
+}
