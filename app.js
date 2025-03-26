@@ -16,6 +16,8 @@ app.set('view engine', 'ejs'); // We set EJS as our view engine
 app.set('views', path.join(__dirname, 'views')); // We tell app where our views are located
 // Configure static, public files
 app.use(express.static('public'));
+// Configure the app with urlencoded so we can use forms in req bodies
+app.use(express.urlencoded({ extended: false }));
 
 // Loading the routers
 app.use(authRoutes);

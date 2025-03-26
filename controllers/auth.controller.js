@@ -1,20 +1,35 @@
+// Our packages
+const User = require("../models/user.model");
+
 // Middleware functions
-function getSignup(req, res){
-    res.render('customer/auth/signup');
+function getSignup(req, res) {
+  res.render("customer/auth/signup");
 }
 
 // Handles user signup form and saving the data into the database
-function signup(req, res) {
-    
+async function signup(req, res) {
+  const user = new User(
+    req.body.email,
+    req.body.password,
+    req.body.fullname,
+    req.body.street,
+    req.body.postal,
+    req.body.city
+  );
+
+  await user.signup();
+
+  // In a form submition you want to redirect instead of render   
+  res.redirect('/login');
 }
 
-function getLogin(req, res){
-    // To complete 
+function getLogin(req, res) {
+  res.render('customer/auth/login');
 }
 
 // Exports
 module.exports = {
-    getSignup: getSignup,
-    getLogin: getLogin,
-    signup: signup
+  getSignup: getSignup,
+  getLogin: getLogin,
+  signup: signup,
 };
