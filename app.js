@@ -7,7 +7,8 @@ const csrf = require('csurf');
 
 // Our packages
 const db = require('./data/database');
-const addCsrfTokenMiddleware= require('./middlewares/csrf-token');
+const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
+const errorHandlerMiddleware = require('./middlewares/error-handler');
 const authRoutes = require('./routes/auth.routes');
 
 // Loading app
@@ -27,6 +28,8 @@ app.use(csrf());
 app.use(addCsrfTokenMiddleware);
 // Loading the routers
 app.use(authRoutes);
+// Handling errors
+app.use(errorHandlerMiddleware);
 
 // Starting the app, 3000 as default port
 db.connectToDatabase().then(function() {
