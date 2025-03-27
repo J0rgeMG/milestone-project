@@ -19,6 +19,7 @@
   "description": "A milestone project, online shop",
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "csurf": "^1.10.0",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mongodb": "^6.15.0"

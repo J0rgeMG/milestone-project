@@ -7,6 +7,8 @@
     <main>
         <h1>Create New Account</h1>
         <form action="/signup" method="POST">
+            <!-- CSRF Token -->
+             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <!-- Log in info -->
              <p>
                  <label for="email">E-Mail</label>

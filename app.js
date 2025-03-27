@@ -3,9 +3,11 @@ const path = require('path');
 
 // Third party packages
 const express = require('express');
+const csrf = require('csurf');
 
 // Our packages
 const db = require('./data/database');
+const addCsrfTokenMiddleware= require('./middlewares/csrf-token');
 const authRoutes = require('./routes/auth.routes');
 
 // Loading app
@@ -19,6 +21,10 @@ app.use(express.static('public'));
 // Configure the app with urlencoded so we can use forms in req bodies
 app.use(express.urlencoded({ extended: false }));
 
+// Middleware
+// Add csurf to protect against CSRF attacks
+app.use(csrf());
+app.use(addCsrfTokenMiddleware);
 // Loading the routers
 app.use(authRoutes);
 
