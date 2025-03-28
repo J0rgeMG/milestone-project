@@ -4,8 +4,10 @@ const path = require('path');
 // Third party packages
 const express = require('express');
 const csrf = require('csurf');
+const expressSesion = require('express-session');
 
 // Our packages
+const createSessionConfig = require('./config/session');
 const db = require('./data/database');
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
@@ -23,6 +25,9 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 
 // Middleware
+// Configuring session cookies
+const sessionConfig = createSessionConfig();
+app.use(expressSesion(sessionConfig));
 // Add csurf to protect against CSRF attacks
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
