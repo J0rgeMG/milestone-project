@@ -11,6 +11,7 @@ const createSessionConfig = require('./config/session');
 const db = require('./data/database');
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
+const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const authRoutes = require('./routes/auth.routes');
 const productsRoutes = require('./routes/products.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -26,13 +27,15 @@ app.use(express.static('public'));
 // Configure the app with urlencoded so we can use forms in req bodies
 app.use(express.urlencoded({ extended: false }));
 
-// Middleware
+// Middleware | Code that executes in every HTML request
 // Configuring session cookies
 const sessionConfig = createSessionConfig();
 app.use(expressSesion(sessionConfig));
 // Add csurf to protect against CSRF attacks
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
+// Checking if the user is login
+app.use(checkAuthStatusMiddleware);
 // Loading the routers
 app.use(baseRoutes);
 app.use(authRoutes);
