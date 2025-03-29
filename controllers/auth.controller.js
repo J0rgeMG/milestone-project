@@ -8,7 +8,7 @@ function getSignup(req, res) {
 }
 
 // Handles user signup form and saving the data into the database
-async function signup(req, res) {
+async function signup(req, res, next) {
   const user = new User(
     req.body.email,
     req.body.password,
@@ -18,7 +18,12 @@ async function signup(req, res) {
     req.body.city
   );
 
-  await user.signup();
+  try{
+    await user.signup();
+   } catch(error) {
+    next(error);
+    return;
+  }
 
   // In a form submition you want to redirect instead of render   
   res.redirect('/login');
@@ -28,9 +33,16 @@ function getLogin(req, res) {
   res.render('customer/auth/login');
 }
 
-async function login(req, res) {
+async function login(req, res, next) {
   const user = new User(req.body.email, req.body.password);
-  const existingUser = await user.getUserWithSameEmail();
+  let existingUser;
+
+  try{
+    existingUser = await user.getUserWithSameEmail();
+   } catch(error) {
+    next(error);
+    return;
+  }
 
   if(!existingUser){
     res.redirect('/login');
