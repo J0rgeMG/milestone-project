@@ -86,6 +86,7 @@ a {
   border-color: var(--color-primary-700);
 }
 
+/* Error message styling */
 .alert {
   border-radius: var(--border-radius-small);
   background-color: var(--color-error-100);
