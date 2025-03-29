@@ -6,15 +6,21 @@
     <%-  include('../../shared/includes/header') %>
     <main>
         <h1>Log in</h1>
+        <% if (inputData.errorMessage) { %>
+            <section class="alert">
+                <h2>Invalid Credentials</h2>
+                <p><%= inputData.errorMessage %></p>
+            </section>
+        <% } %>
         <form action="/login" method="POST">
             <!-- Log in info -->
              <p>
                  <label for="email">E-Mail</label>
-                 <input type="email" name="email" id="email" required/>
+                 <input type="email" name="email" id="email" value="<%= inputData.email %>" required/>
              </p>
              <p>
                  <label for="password">Password</label>
-                 <input type="password" name="password" id="password" minlength="6" required/>
+                 <input type="password" name="password" id="password" minlength="6" value="<%= inputData.password %>" required/>
              </p>
             
             <button class="btn">Login</button>
