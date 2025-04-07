@@ -3,6 +3,7 @@ const express = require('express');
 
 // Our packages
 const adminController = require('../controllers/admin.controller');
+const imageUploadMiddleware = require('../middlewares/image-upload');
 
 // Loading router
 const router = express.Router();
@@ -11,6 +12,8 @@ const router = express.Router();
 router.get('/products', adminController.getProducts);
 
 router.get('/products/new', adminController.getNewProduct);
+
+router.post('/products', imageUploadMiddleware, adminController.createNewProduct);
 
 
 // Exports
