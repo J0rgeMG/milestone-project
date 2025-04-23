@@ -13,6 +13,7 @@ const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
+const cartMiddleware = require('./middlewares/cart');
 const authRoutes = require('./routes/auth.routes');
 const productsRoutes = require('./routes/products.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -38,6 +39,8 @@ app.use(expressSesion(sessionConfig));
 // Add csurf to protect against CSRF attacks
 app.use(csrf());
 app.use(addCsrfTokenMiddleware);
+// Cart middleware
+app.use(cartMiddleware);
 // Checking if the user is login
 app.use(checkAuthStatusMiddleware);
 // Loading the routers
