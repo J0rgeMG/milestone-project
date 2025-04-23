@@ -10,5 +10,7 @@ const router = express.Router();
 // Routes WIP
 router.get('/products', productsController.getAllProducts);
 
+router.get('/products/:id', productsController.getProductDetails);
+
 // Exports
 module.exports = router;
