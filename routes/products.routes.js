@@ -2,15 +2,13 @@
 const express = require('express');
 
 // First party packages
-const authController = require('../controllers/auth.controller');
+const productsController = require('../controllers/products.controller');
 
 // Loading router
 const router = express.Router();
 
 // Routes WIP
-router.get('/products',function(req, res) {
-    res.render('customer/products/all-products');
-});
+router.get('/products', productsController.getAllProducts);
 
 // Exports
 module.exports = router;
