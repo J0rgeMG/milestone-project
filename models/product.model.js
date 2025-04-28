@@ -24,7 +24,7 @@ class Product{
             error.code = 404;
             throw error;
         }
-        const product = await db.getDb().colelction('products').findOne({_id: prodId});
+        const product = await db.getDb().collection('products').findOne({_id: prodId});
     
         if(!product) {
             const error = new Error('Could not find product with provided id.');
@@ -36,7 +36,7 @@ class Product{
     }
 
     static async findAll() {
-        const products = await db.getDb().colelction('products').find().toArray();
+        const products = await db.getDb().collection('products').find().toArray();
         
         return products.map(function(productDocument) {
             return new Product(productDocument);
@@ -64,11 +64,11 @@ class Product{
                 delete productData.image;
             }
 
-            await db.getDb().colelction('products').updateOne({_id: productId}, {
+            await db.getDb().collection('products').updateOne({_id: productId}, {
                 $set: productData,
             });
         } else {
-            await db.getDb().colelction('products').insertOne(productData);
+            await db.getDb().collection('products').insertOne(productData);
         }
 
     }
@@ -80,7 +80,7 @@ class Product{
 
     remove() {
         const productId = new mongodb.ObjectId(this.id);
-        return db.getDb().colelction('products').deleteOne({_id: productId});
+        return db.getDb().collection('products').deleteOne({_id: productId});
     }
 }
 
