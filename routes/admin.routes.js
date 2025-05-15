@@ -1,15 +1,11 @@
-// Third party packages
 const express = require('express');
 
-// Our packages
 const adminController = require('../controllers/admin.controller');
 const imageUploadMiddleware = require('../middlewares/image-upload');
 
-// Loading router
 const router = express.Router();
 
-// Routes WIP
-router.get('/products', adminController.getProducts);
+router.get('/products', adminController.getProducts); // /admin/products
 
 router.get('/products/new', adminController.getNewProduct);
 
@@ -21,6 +17,8 @@ router.post('/products/:id', imageUploadMiddleware, adminController.updateProduc
 
 router.delete('/products/:id', adminController.deleteProduct);
 
+router.get('/orders', adminController.getOrders);
 
-// Exports
+router.patch('/orders/:id', adminController.updateOrder);
+
 module.exports = router;

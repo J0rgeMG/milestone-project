@@ -1,12 +1,9 @@
-// Buit-in packages
 const path = require('path');
 
-// Third party packages
 const express = require('express');
 const csrf = require('csurf');
-const expressSesion = require('express-session');
+const expressSession = require('express-session');
 
-// Our packages
 const createSessionConfig = require('./config/session');
 const db = require('./data/database');
 const addCsrfTokenMiddleware = require('./middlewares/csrf-token');
@@ -14,6 +11,7 @@ const errorHandlerMiddleware = require('./middlewares/error-handler');
 const checkAuthStatusMiddleware = require('./middlewares/check-auth');
 const protectRoutesMiddleware = require('./middlewares/protect-routes');
 const cartMiddleware = require('./middlewares/cart');
+const updateCartPricesMiddleware = require('./middlewares/update-cart-prices');
 const authRoutes = require('./routes/auth.routes');
 const productsRoutes = require('./routes/products.routes');
 const baseRoutes = require('./routes/base.routes');
@@ -21,46 +19,42 @@ const adminRoutes = require('./routes/admin.routes');
 const cartRoutes = require('./routes/cart.routes');
 const ordersRoutes = require('./routes/orders.routes');
 
-// Loading app
 const app = express();
 
-// App configuration
-app.set('view engine', 'ejs'); // We set EJS as our view engine
-app.set('views', path.join(__dirname, 'views')); // We tell app where our views are located
-// Configure static, public files
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static('public'));
-app.use('/products/assests', express.static('product-data'));
-// Configure the app with urlencoded so we can use forms in req bodies
+app.use('/products/assets', express.static('product-data'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Middleware | Code that executes in every HTML request
-// Configuring session cookies
 const sessionConfig = createSessionConfig();
-app.use(expressSesion(sessionConfig));
-// Add csurf to protect against CSRF attacks
+
+app.use(expressSession(sessionConfig));
 app.use(csrf());
-app.use(addCsrfTokenMiddleware);
-// Cart middleware
+
 app.use(cartMiddleware);
-// Checking if the user is login
+app.use(updateCartPricesMiddleware);
+
+app.use(addCsrfTokenMiddleware);
 app.use(checkAuthStatusMiddleware);
-// Loading the routers
+
 app.use(baseRoutes);
 app.use(authRoutes);
 app.use(productsRoutes);
 app.use('/cart', cartRoutes);
-app.use(protectRoutesMiddleware); // This will protectadmin routes to unautarized users
+app.use(protectRoutesMiddleware);
 app.use('/orders', ordersRoutes);
 app.use('/admin', adminRoutes);
-// Handling errors
+
 app.use(errorHandlerMiddleware);
 
-// Starting the app, 3000 as default port
-db.connectToDatabase().then(function() {
-    // <domain>:3000
+db.connectToDatabase()
+  .then(function () {
     app.listen(3000);
-}).catch(function(error) {
+  })
+  .catch(function (error) {
     console.log('Failed to connect to the database!');
     console.log(error);
-});
+  });
